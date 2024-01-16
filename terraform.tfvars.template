@@ -1,10 +1,13 @@
-user_ocid = "ocid1.user.oc1.."
-fingerprint = "1c.."
-private_key_path = "~/.oci/oci_api_key.pem"
-tenancy_ocid = "ocid1.tenancy.oc1.."
-region = "us-ashburn-1"
+# PROVIDER
+api_fingerprint      = ""
+api_private_key_path = ""
+region               = ""
+tenancy_ocid         = ""
+current_user_ocid    = ""
 
-compute_compartment_ocid = "ocid1.compartment.oc1."
-network_compartment_ocid = "ocid1.compartment.oc1."
-availability_domain_number = "1"
-ssh_public_key = "ssh-rsa AAA...H"
+# COMPARTMENT
+mission_owner_key         = "EXAMPLE"
+enable_compartment_delete = true
+workload_compartment_name = "OCI-SCCA-LZ-Workload"
+home_compartment_id       = ""
+
