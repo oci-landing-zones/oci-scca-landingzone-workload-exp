@@ -9,5 +9,14 @@ current_user_ocid    = ""
 mission_owner_key         = "EXAMPLE"
 enable_compartment_delete = true
 workload_compartment_name = "OCI-SCCA-LZ-Workload"
+vdms_compartment_name = "OCI-SCCA-LZ-VDMS"
+resource_label = ""
 home_compartment_id       = ""
 
+# IDENTITY
+mission_owner_workload_admin_group = ""
+mission_owner_application_admin_group = ""
+mission_owner_database_admin_group = ""
+vdss_admin_group = ""
+vdms_admin_group = ""
+master_encryption_key_ocid = ""
