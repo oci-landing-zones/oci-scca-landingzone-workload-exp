@@ -15,8 +15,9 @@ home_compartment_id       = ""
 
 # IDENTITY
 mission_owner_workload_admin_group = ""
-mission_owner_application_admin_group = ""
-mission_owner_database_admin_group = ""
 vdss_admin_group = ""
 vdms_admin_group = ""
+identity_domain_name = ""
+idcs_endpoint = ""
 master_encryption_key_ocid = ""
+
