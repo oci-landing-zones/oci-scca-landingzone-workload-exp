@@ -30,7 +30,7 @@ variable "master_encryption_key_ocid" {
 
 variable "vdms_compartment_name" {
   type        = string
-  description = "Name of the VDMS compartment"
+  description = "Full name of the VDMS compartment, including region key"
 }
 
 variable "resource_label" {
