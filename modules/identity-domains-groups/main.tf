@@ -6,7 +6,7 @@ terraform {
   }
 }
 
-resource "oci_identity_domains_group" "test_group" {
+resource "oci_identity_domains_group" "domains_group" {
 
   display_name  = var.group_display_name
   idcs_endpoint = var.idcs_endpoint

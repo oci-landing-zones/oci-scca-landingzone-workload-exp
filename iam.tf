@@ -1,7 +1,7 @@
 locals {
   workload_policy = {
-    name        = "OCI-SCCA-LZ-Workload-Policy"
-    description = "This account is required for the management of the Mission Application workloads."
+    name        = "OCI-SCCA-LZ-Workload-Policy-${var.resource_label}"
+    description = "This account is required for the management of the Mission Application workloads with resource label ${var.resource_label}"
     statements = [
       "Allow group ${var.identity_domain_name}/${var.mission_owner_workload_admin_group} to manage all-resources in compartment ${module.workload_compartment.compartment_name}",
       "Allow group ${var.identity_domain_name}/${var.mission_owner_workload_admin_group} to use key-delegate in compartment ${var.vdms_compartment_name}-${local.region_key[0]}-${var.resource_label} where target.key.id = ${var.master_encryption_key_ocid}"

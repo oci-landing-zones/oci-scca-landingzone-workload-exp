@@ -3,6 +3,11 @@ variable "tenancy_ocid" {
   description = "the OCID of tenancy"
 }
 
+variable "region" {
+  type = string
+  description = "Region the resources will be deployed in"
+}
+
 variable "mission_owner_workload_admin_group" {
   type        = string
   description = "Name of the Mission Owner Workload Admin user group"
