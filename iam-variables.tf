@@ -32,9 +32,3 @@ variable "vdms_compartment_name" {
   type        = string
   description = "Full name of the VDMS compartment, including region key"
 }
-
-variable "resource_label" {
-  type        = string
-  description = "Unique prefix to avoid naming conflict"
-}
-

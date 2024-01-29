@@ -10,7 +10,6 @@ mission_owner_key         = "EXAMPLE"
 enable_compartment_delete = true
 workload_compartment_name = "OCI-SCCA-LZ-Workload"
 vdms_compartment_name = "OCI-SCCA-LZ-VDMS"
-resource_label = ""
 home_compartment_id       = ""
 
 # IDENTITY
