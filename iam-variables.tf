@@ -4,7 +4,7 @@ variable "tenancy_ocid" {
 }
 
 variable "region" {
-  type = string
+  type        = string
   description = "Region the resources will be deployed in"
 }
 
@@ -14,27 +14,27 @@ variable "mission_owner_workload_admin_group" {
 }
 
 variable "idcs_endpoint" {
-  type = string
+  type        = string
   description = "URL endpoint of the existing identity domain"
 }
 
 variable "identity_domain_name" {
-  type = string
+  type        = string
   description = "Identity domain display name"
 }
 
 variable "master_encryption_key_ocid" {
-  type = string
+  type        = string
   description = "OCID of the master encryption key"
 }
 
 variable "vdms_compartment_name" {
-  type = string
+  type        = string
   description = "Name of the VDMS compartment"
 }
 
 variable "resource_label" {
-  type = string
+  type        = string
   description = "Unique prefix to avoid naming conflict"
 }
 
