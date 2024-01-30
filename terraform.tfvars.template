@@ -9,7 +9,9 @@ current_user_ocid    = ""
 mission_owner_key         = "EXAMPLE"
 enable_compartment_delete = true
 workload_compartment_name = "OCI-SCCA-LZ-Workload"
+vdms_compartment_name = "OCI-SCCA-LZ-VDMS"
 home_compartment_id       = ""
+
 
 #Network 
 
@@ -25,3 +27,13 @@ vdss_vcn_cidr_block              = "192.168.0.0/24"
 vdms_vcn_cidr_block              = "192.168.1.0/24"
 enable_workload_load_balancer    = false
 enable_workload_vtap             = false
+
+# IDENTITY
+mission_owner_workload_admin_group = ""
+vdss_admin_group = ""
+vdms_admin_group = ""
+identity_domain_name = ""
+idcs_endpoint = ""
+master_encryption_key_ocid = ""
+
+
