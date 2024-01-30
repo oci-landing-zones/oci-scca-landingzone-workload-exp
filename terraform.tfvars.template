@@ -12,6 +12,22 @@ workload_compartment_name = "OCI-SCCA-LZ-Workload"
 vdms_compartment_name = "OCI-SCCA-LZ-VDMS"
 home_compartment_id       = ""
 
+
+#Network 
+
+workload_vcn_cidr_block          =  "192.170.0.0/16"
+workload_vcn_dns_label           = "wrkvcndns"
+workload_subnet_cidr             =  "192.170.1.0/24"
+workload_subnet_dns_label        =  "wrkdnslabel"
+
+workload_db_vcn_cidr_block       =  "192.170.2.0/24"
+workload_db_dns_label            =  "wrkdblabel"
+drg_id                           = ""
+vdss_vcn_cidr_block              = "192.168.0.0/24"
+vdms_vcn_cidr_block              = "192.168.1.0/24"
+enable_workload_load_balancer    = false
+enable_workload_vtap             = false
+
 # IDENTITY
 mission_owner_workload_admin_group = ""
 vdss_admin_group = ""
@@ -19,4 +35,5 @@ vdms_admin_group = ""
 identity_domain_name = ""
 idcs_endpoint = ""
 master_encryption_key_ocid = ""
+
 
