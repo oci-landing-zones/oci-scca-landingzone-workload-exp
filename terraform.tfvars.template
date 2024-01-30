@@ -11,3 +11,16 @@ enable_compartment_delete = true
 workload_compartment_name = "OCI-SCCA-LZ-Workload"
 home_compartment_id       = ""
 
+#Network 
+
+workload_vcn_cidr_block          =  "192.170.0.0/16"
+workload_subnet_cidr             =  "192.170.1.0/24"
+workload_subnet_dns_label        =  "wrkdnslabel"
+
+workload_db_vcn_cidr_block.      =  "192.170.2.0/24"
+workload_db_dns_label.           =  "wrkdblabel"
+drg_id                           = ""
+vdss_vcn_cidr_block              = "192.168.0.0/24"
+vdms_vcn_cidr_block              = "192.168.1.0/24"
+enable_workload_load_balancer    = false
+enable_workload_vtap             = false
