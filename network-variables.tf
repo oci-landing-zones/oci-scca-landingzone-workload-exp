@@ -1,7 +1,30 @@
+variable "current_user_ocid" {
+  type        = string
+  description = "OCID of the current user"
+}
+
+variable "api_fingerprint" {
+  type        = string
+  description = "The fingerprint of API"
+  default     = ""
+}
+
+variable "api_private_key_path" {
+  type        = string
+  description = "The local path to the API private key"
+  default     = ""
+}
+
 variable "workload_vcn_cidr_block" {
   description = "Workload VCN CIDR Block"
   type    = string
   default = "192.170.1.0/24"
+}
+
+variable "workload_vcn_dns_label" {
+  description = "Workload Subnet DNS Label"
+  type    = string
+  default = "wrkvcndns"
 }
 
 variable "workload_subnet_cidr" {

@@ -18,7 +18,7 @@ locals {
   }
   wrk_db_network = {
     name                     = "${var.workload_compartment_name}-Wrk-DB-VCN-${local.region_key[0]}-${var.mission_owner_key}"
-    vcn_dns_label            = var.workload_db_vcn_dns_label
+    vcn_dns_label            = var.workload_db_dns_label
     lockdown_default_seclist = false
     subnet_map = {
       OCI-SCCA-LZ-Workload-DB-SUB = {
@@ -46,7 +46,7 @@ locals {
   workload_route_table = {
     Workload-VCN-Egress = {
       route_table_display_name = "${var.workload_compartment_name}-VCN-Egress"
-      subnet_id                = module.workload_network.subnets[local.workload_network.subnet_map["OCI-SCCA-LZ-Workload-SUB"].name]
+      subnet_id                = module.workload_network.subnets[local.wrk_network.subnet_map["OCI-SCCA-LZ-Workload-SUB"].name]
       subnet_name              = "OCI-SCCA-LZ-Workload-SUB"
       route_rules = {
         "vdss" = {
@@ -76,7 +76,7 @@ locals {
   workload_db_route_table = {
     Workload-DB-VCN-Egress = {
       route_table_display_name = "${var.workload_compartment_name}-DB-VCN-Egress"
-      subnet_id                = module.workload_db_network.subnets[local.workload_db_network.subnet_map["OCI-SCCA-LZ-Workload-DB-SUB"].name]
+      subnet_id                = module.workload_db_network.subnets[local.wrk_db_network.subnet_map["OCI-SCCA-LZ-Workload-DB-SUB"].name]
       subnet_name              = "OCI-SCCA-LZ-Workload-DB-SUB"
       route_rules = {
         "vdss" = {
@@ -118,10 +118,17 @@ locals {
   }
   workload_load_balancer = {
     lb_name   = "${var.workload_compartment_name}-LB-${local.region_key[0]}-${var.mission_owner_key}"
-    lb_subnet = module.workload_network.subnets[local.workload_network.subnet_map["OCI-SCCA-LZ-Workload-SUB"].name]
+    lb_subnet = module.workload_network.subnets[local.wrk_network.subnet_map["OCI-SCCA-LZ-Workload-SUB"].name]
   }
 }  
 
+data "oci_core_services" "all_oci_services" {
+  filter {
+    name   = "name"
+    values = ["All [A-Za-z0-9]+ Services In Oracle Services Network"]
+    regex  = true
+  }
+}
 
 module "workload_network" {
   source = "./modules/vcn"
@@ -187,14 +194,14 @@ module "workload_vtap" {
 
   compartment_id              = module.workload_compartment.compartment_id
   vtap_source_type            = local.workload_vtap.vtap_source_type
-  vtap_source_id              = module.workload_load_balancer.lb_id
+  vtap_source_id              = module.workload_load_balancer[0].lb_id
   vcn_id                      = module.workload_network.vcn_id
   vtap_display_name           = local.workload_vtap.vtap_display_name
   vtap_capture_filter_rules   = local.workload_vtap.vtap_capture_filter_rules
-  is_vtap_enabled             = var.is_workload_vtap_enabled
+  is_vtap_enabled             = var.enable_workload_vtap
   capture_filter_display_name = local.workload_vtap.capture_filter_display_name
   nlb_display_name            = local.workload_vtap.nlb_display_name
-  nlb_subnet_id               = module.workload_network.subnets[local.workload_network.subnet_map["OCI-SCCA-LZ-Workload-SUB"].name]
+  nlb_subnet_id               = module.workload_network.subnets[local.wrk_network.subnet_map["OCI-SCCA-LZ-Workload-SUB"].name]
   nlb_listener_name           = local.workload_vtap.nlb_listener_name
   nlb_backend_set_name        = local.workload_vtap.nlb_backend_set_name
 }
@@ -208,7 +215,7 @@ module "wrk_vdss_sgw" {
   sgw_display_name         = local.workload_vdss_sgw.sgw_display_name
   route_table_display_name = local.workload_vdss_sgw.route_table_display_name
   route_rules              = local.workload_vdss_sgw.route_rules
-  vcn_id                   = module.workload_vdss_network.vcn_id
+  vcn_id                   = module.workload_network.vcn_id
 }
 
 module "workload_vcn_drg_attachment" {
