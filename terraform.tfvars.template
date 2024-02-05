@@ -12,7 +12,6 @@ workload_compartment_name = "OCI-SCCA-LZ-Workload"
 vdms_compartment_name     = ""
 home_compartment_id       = ""
 
-
 #Network
 workload_vcn_cidr_block   = "192.170.0.0/16"
 workload_vcn_dns_label    = "wrkvcn"
@@ -36,4 +35,6 @@ identity_domain_name               = ""
 idcs_endpoint                      = ""
 master_encryption_key_ocid         = ""
 
-
+# MONITORING
+workload_warning_topic_endpoints  = []
+workload_critical_topic_endpoints = []
