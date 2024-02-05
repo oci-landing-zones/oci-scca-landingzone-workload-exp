@@ -17,56 +17,70 @@ variable "api_private_key_path" {
 
 variable "workload_vcn_cidr_block" {
   description = "Workload VCN CIDR Block"
-  type    = string
-  default = "192.170.1.0/24"
+  type        = string
+  default     = "192.170.0.0/16"
 }
 
 variable "workload_vcn_dns_label" {
   description = "Workload Subnet DNS Label"
-  type    = string
-  default = "wrkvcndns"
+  type        = string
+  default     = "wrkvcndns"
 }
 
 variable "workload_subnet_cidr" {
   description = "Workload Subnet CIDR Block"
-  type    = string
-  default = "192.170.1.0/24"
+  type        = string
+  default     = "192.170.1.0/24"
 }
 
 variable "workload_subnet_dns_label" {
   description = "Workload Subnet DNS Label"
-  type    = string
-  default = "wrkdns"
+  type        = string
+  default     = "wrkdns"
 }
 
 variable "workload_db_vcn_cidr_block" {
-  description = "Workload Subnet CIDR Block"
-  type    = string
-  default = "192.170.2.0/24"
+  description = "Workload DB VCN CIDR Block"
+  type        = string
+  default     = "192.171.0.0/16"
 }
 
 variable "workload_db_dns_label" {
-  description = "Workload Subnet DNS Label"
-  type    = string
-  default = "wrkdbdns"
+  description = "Workload Database DNS Label"
+  type        = string
+  default     = "wrkdb"
 }
+
+variable "workload_db_subnet_cidr_block" {
+  description = "Workload DB subnet CIDR Block"
+  type        = string
+  default     = "192.171.0.0/16"
+}
+
+variable "workload_db_subnet_dns_label" {
+  description = "Workload Database Subnet DNS Label"
+  type        = string
+  default     = "dbsubnet"
+}
+
 variable "drg_id" {
-  type    = string
+  type = string
   validation {
     condition     = can(regex("^drg$", split(".", var.drg_id)[1]))
     error_message = "Only DRG OCID is allowed."
   }
 }
+
 variable "vdss_vcn_cidr_block" {
-  description = "Workload Subnet CIDR Block"
-  type    = string
-  default = "192.170.2.0/24"
+  description = "VDSS VCN CIDR Block"
+  type        = string
 }
+
 variable "vdms_vcn_cidr_block" {
-  description = "Workload Subnet CIDR Block"
-  type    = string
-  default = "192.170.2.0/24"
+  description = "VDMS VCN CIDR Block"
+  type        = string
 }
+
 variable "enable_workload_load_balancer" {
   type    = bool
   default = false
@@ -75,6 +89,7 @@ variable "enable_workload_load_balancer" {
     error_message = "The enable_workload_load_balancer Flag variable must be either true or false."
   }
 }
+
 variable "enable_workload_vtap" {
   type    = bool
   default = false
@@ -82,4 +97,9 @@ variable "enable_workload_vtap" {
     condition     = can(regex("^([t][r][u][e]|[f][a][l][s][e])$", var.enable_workload_vtap))
     error_message = "The enable_workload_vtap Flag variable must be either true or false."
   }
+}
+
+variable "is_workload_vtap_enabled" {
+  type    = bool
+  default = false
 }

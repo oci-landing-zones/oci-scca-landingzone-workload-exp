@@ -24,8 +24,8 @@ locals {
       OCI-SCCA-LZ-Workload-DB-SUB = {
         name                       = "${var.workload_compartment_name}-Wrk-DB-${local.region_key[0]}-${var.mission_owner_key}"
         description                = "WORKLOAD DB Subnet"
-        dns_label                  = var.workload_db_dns_label
-        cidr_block                 = var.workload_db_vcn_cidr_block
+        dns_label                  = var.workload_db_subnet_dns_label
+        cidr_block                 = var.workload_db_subnet_cidr_block
         prohibit_public_ip_on_vnic = true
       }
     }
@@ -43,6 +43,7 @@ locals {
       }
     }
   }
+
   workload_route_table = {
     Workload-VCN-Egress = {
       route_table_display_name = "${var.workload_compartment_name}-VCN-Egress"
@@ -120,7 +121,7 @@ locals {
     lb_name   = "${var.workload_compartment_name}-LB-${local.region_key[0]}-${var.mission_owner_key}"
     lb_subnet = module.workload_network.subnets[local.wrk_network.subnet_map["OCI-SCCA-LZ-Workload-SUB"].name]
   }
-}  
+}
 
 data "oci_core_services" "all_oci_services" {
   filter {
@@ -198,7 +199,7 @@ module "workload_vtap" {
   vcn_id                      = module.workload_network.vcn_id
   vtap_display_name           = local.workload_vtap.vtap_display_name
   vtap_capture_filter_rules   = local.workload_vtap.vtap_capture_filter_rules
-  is_vtap_enabled             = var.enable_workload_vtap
+  is_vtap_enabled             = var.is_workload_vtap_enabled
   capture_filter_display_name = local.workload_vtap.capture_filter_display_name
   nlb_display_name            = local.workload_vtap.nlb_display_name
   nlb_subnet_id               = module.workload_network.subnets[local.wrk_network.subnet_map["OCI-SCCA-LZ-Workload-SUB"].name]
