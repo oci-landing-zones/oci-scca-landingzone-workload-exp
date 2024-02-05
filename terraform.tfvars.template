@@ -9,31 +9,31 @@ current_user_ocid    = ""
 mission_owner_key         = "EXAMPLE"
 enable_compartment_delete = true
 workload_compartment_name = "OCI-SCCA-LZ-Workload"
-vdms_compartment_name = "OCI-SCCA-LZ-VDMS"
+vdms_compartment_name     = ""
 home_compartment_id       = ""
 
 
-#Network 
+#Network
+workload_vcn_cidr_block   = "192.170.0.0/16"
+workload_vcn_dns_label    = "wrkvcn"
+workload_subnet_cidr      = "192.170.1.0/24"
+workload_subnet_dns_label = "wrksubnet"
 
-workload_vcn_cidr_block          =  "192.170.0.0/16"
-workload_vcn_dns_label           = "wrkvcndns"
-workload_subnet_cidr             =  "192.170.1.0/24"
-workload_subnet_dns_label        =  "wrkdnslabel"
+workload_db_vcn_cidr_block    = "192.171.0.0/16"
+workload_db_dns_label         = "wrkdb"
+workload_db_subnet_cidr_block = "192.171.1.0/24"
+workload_db_subnet_dns_label  = "dbsubnet"
 
-workload_db_vcn_cidr_block       =  "192.170.2.0/24"
-workload_db_dns_label            =  "wrkdblabel"
-drg_id                           = ""
-vdss_vcn_cidr_block              = "192.168.0.0/24"
-vdms_vcn_cidr_block              = "192.168.1.0/24"
-enable_workload_load_balancer    = false
-enable_workload_vtap             = false
+vdss_vcn_cidr_block           = "192.168.0.0/24"
+vdms_vcn_cidr_block           = "192.168.1.0/24"
+enable_workload_load_balancer = true
+enable_workload_vtap          = true
+drg_id                        = ""
 
 # IDENTITY
-mission_owner_workload_admin_group = ""
-vdss_admin_group = ""
-vdms_admin_group = ""
-identity_domain_name = ""
-idcs_endpoint = ""
-master_encryption_key_ocid = ""
+mission_owner_workload_admin_group = "WORKLOAD-EXAMPLE-ADMIN"
+identity_domain_name               = ""
+idcs_endpoint                      = ""
+master_encryption_key_ocid         = ""
 
 

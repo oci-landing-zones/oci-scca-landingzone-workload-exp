@@ -13,7 +13,7 @@ locals {
 
 
 module "workload_critical_topic" {
-  source = "modules/notification-topic"
+  source = "./modules/notification-topic"
 
   compartment_id        = module.workload_compartment.compartment_id
   topic_name            = local.workload_critical_topic.topic_name
@@ -24,7 +24,7 @@ module "workload_critical_topic" {
 
 
 module "workload_warning_topic" {
-  source = "modules/notification-topic"
+  source = "./modules/notification-topic"
 
   compartment_id        = module.workload_compartment.compartment_id
   topic_name            = local.workload_warning_topic.topic_name
@@ -180,7 +180,7 @@ locals {
 }
 
 module "workload_critical_alarms" {
-  source = "modules/alarm"
+  source = "./modules/alarm"
 
   compartment_id                   = module.workload_compartment.compartment_id
   notification_topic_id            = module.workload_critical_topic.topic_id
@@ -192,7 +192,7 @@ module "workload_critical_alarms" {
 }
 
 module "workload_warning_alarms" {
-  source = "modules/alarm"
+  source = "./modules/alarm"
 
   compartment_id                   = module.workload_compartment.compartment_id
   notification_topic_id            = module.workload_warning_topic.topic_id
