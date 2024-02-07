@@ -25,6 +25,8 @@ module "workload_critical_topic" {
   topic_description     = local.workload_critical_topic.topic_description
   subscription_endpoint = var.workload_critical_topic_endpoints
   subscription_protocol = local.workload_critical_topic.subscription_protocol
+
+  depends_on = [ module.workload_compartment ]
 }
 
 
@@ -36,6 +38,8 @@ module "workload_warning_topic" {
   topic_description     = local.workload_warning_topic.topic_description
   subscription_endpoint = var.workload_warning_topic_endpoints
   subscription_protocol = local.workload_warning_topic.subscription_protocol
+
+  depends_on = [ module.workload_compartment ]
 }
 
 # -----------------------------------------------------------------------------
