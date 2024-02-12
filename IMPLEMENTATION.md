@@ -130,7 +130,7 @@ This section will provide deployment of the Workload Expansion Module on the exi
 | <a name="current_user_ocid"></a> [current\_user\_ocid](#current\_user\_ocid)   | Provide Current User OCID Value | `string` | ``    | 
 | <a name="region"></a> [region](#region)   | Provide OCI Home Region Name | `string` | ``    | 
 | <a name="api_fingerprint"></a> [api\_fingerprint](#api\_fingerprint)   | Provide API Fingerprint | `string` | ``    | 
-| <a name="api_private_key_path"></a> [api\_private\_key\_path](#api\_private\_key\_path)   | Provide  | `string` | ``    | 
+| <a name="api_private_key_path"></a> [api\_private\_key\_path](#api\_private\_key\_path)   | Provide Absolute Path to Private Key | `string` | ``    | 
 
 
 ## 5.2 : Deploying Workload Expansion Module on top of SCCA LZ.
