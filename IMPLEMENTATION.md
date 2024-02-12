@@ -11,7 +11,7 @@
 
 # <a name="introduction"></a>1. Introduction
 
-SCCA Workload Expansion Module allows customers to deploy additional workload into an existing SCCA LZ environment. The Workload expansion module is responsible for deploying Compartment, Network (VCN), Logging, Monitoring, and Workload related IAM resources. The SCCA LZ will set up one initial workload configuration. If, in the future, customers need a separate Workload stack, they can use this module to deploy a workload stack. 
+SCCA Workload Expansion Module allows customers to deploy an additional workload compartment into an existing SCCA LZ environment. The Workload expansion module is responsible for deploying Compartment, Network (VCN), Logging, Monitoring, and Workload related IAM resources. The SCCA LZ template includes one initial workload compartment in its configuration. If customers need additional Workload compartments, they can use this module to deploy the workload expansion module to add it to their existing SCCA LZ environment. 
 
 # <a name="architecture"></a>2. Architecture
 
@@ -36,7 +36,7 @@ The workload Expansion Module will create one compartment using the naming synta
 
 ## 3.2 : Network
 
-The workload Expansion Module will create two separate networks("VCN"), one for workload application use and another for Database resources. Following two VCN will be created and they will acting as spoke to Baseline VCN as Hub.
+The workload Expansion Module will create two separate networks (“VCN”), one for the workload application and another for the database resources. The two VCNs will be acting as spokes to connected back to the baseline VCN which acts as the hub.
 
 ### 3.2.1 : Workload Application Network
 
@@ -56,11 +56,11 @@ The workload expansion module will define one workload Admin group under the Bas
 
 ## 3.5 : VTAP
 
-The workload expansion module will optionally deploy a VTAP on the Workload networks. A VTAP is a cloud resource that can clone network traffic from any source on the same VCN, filter it appropriately, then forward it on to applications such network security, packet collectors, or network analytics packages. The traffic will be encapsulated as per VXLAN protocol data plane, and sent on UDP port 4789. By Default VTAP creation boolen flag set to false. If customer want to enable VTAP they need to enable load balancer as well.
+The workload expansion module will optionally deploy the Virtual Test Access Point (VTAP) service on the Workload networks. A VTAP is a cloud resource that can mirror network traffic from a designated source on the same VCN, filter it appropriately, then forward it on to applications such network security, packet collectors, or network analytics packages. The traffic will be encapsulated as per VXLAN protocol data plane, and sent on UDP port 4789. By default, when the VTAP is deployed, the boolean flag is set to false. The Network Load Balancer is the  VTAP target that receives the mirrored network traffic. 
 
 ## 3.6 : Load Balancer
 
-If the Customer enables VTAP, the workload expansion module will create a Network Load Balancer(NLB), which will load balance traffic per lower-level network traffic details. NLB is pre-configured to listen to VxLAN traffic, i.e., UDP Port 4789. Customer can configure the server(s) for their network security, analytics, or logging applications as backends on this NLB.
+If the VTAP is enabled, the workload expansion module will create a Network Load Balancer (NLB), which will load balance traffic per lower-level network traffic details. NLB is pre-configured to listen to VxLAN traffic, i.e., UDP Port 4789. Customer can configure the server(s) for their network security, analytics, or logging applications as backends on this NLB.
 
 
 # <a name="Workload Expansion Module Variables"></a>4. Workload Expansion Module Variables
