@@ -32,7 +32,7 @@ The workload expansion module is responsible for deploying the below-defined res
 
 ## 3.1 : Workload Compartment
 
-The workload Expansion Module will create one compartment using the naming syntax, starting with the workload_compartment_name variable and ending with mission_owner_key variable.
+The workload Expansion Module will create one compartment using the naming syntax, starting with the workload_compartment_name variable value and ending with mission_owner_key variable value.
 
 ## 3.2 : Network
 
