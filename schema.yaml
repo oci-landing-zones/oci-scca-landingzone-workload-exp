@@ -116,7 +116,7 @@ variables:
     title: Identity Domain Display Name
     required: true
   master_encryption_key_ocid:
-    type: oci:kms:key:id
+    type: string
     description: "OCID of the master encryption key"
     title: Master Encryption Key OCID
     required: true
@@ -185,12 +185,12 @@ variables:
     title: DRG OCID
     required: true
   vdss_vcn_cidr_block:
-    type: oci:core:vcn:id
+    type: string
     description: "VDSS VCN CIDR Block"
     title: VDSS VCN CIDR Block
     required: true
   vdms_vcn_cidr_block:
-    type: oci:core:vcn:id
+    type: string
     description: "VDMS VCN CIDR Block"
     title: VDMS VCN CIDR Block
     required: true
