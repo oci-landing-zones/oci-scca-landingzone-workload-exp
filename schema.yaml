@@ -90,7 +90,7 @@ variables:
     title: Workload Compartment Name
     required: true
   home_compartment_id:
-    type: string
+    type: oci:identity:compartment:id
     description: "The OCID of SCCA Landing Zone Home compartment"
     title: Home Compartment OCID
     required: true
@@ -116,7 +116,7 @@ variables:
     title: Identity Domain Display Name
     required: true
   master_encryption_key_ocid:
-    type: string
+    type: oci:kms:key:id
     description: "OCID of the master encryption key"
     title: Master Encryption Key OCID
     required: true
@@ -185,12 +185,12 @@ variables:
     title: DRG OCID
     required: true
   vdss_vcn_cidr_block:
-    type: string
+    type: oci:core:vcn:id
     description: "VDSS VCN CIDR Block"
     title: VDSS VCN CIDR Block
     required: true
   vdms_vcn_cidr_block:
-    type: string
+    type: oci:core:vcn:id
     description: "VDMS VCN CIDR Block"
     title: VDMS VCN CIDR Block
     required: true
