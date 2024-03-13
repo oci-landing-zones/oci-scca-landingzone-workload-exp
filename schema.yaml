@@ -90,7 +90,7 @@ variables:
     title: Workload Compartment Name
     required: true
   home_compartment_id:
-    type: string
+    type: oci:identity:compartment:id
     description: "The OCID of SCCA Landing Zone Home compartment"
     title: Home Compartment OCID
     required: true
